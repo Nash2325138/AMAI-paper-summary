@@ -5,27 +5,37 @@ Xiaosong Wang, Yifan Peng, Le Lu, Zhiyong Lu, Mohammadhadi Bagheri, and Ronald M
 
 ## Contribution
 In the domain of medical images, labeled datas are usually valuable because of the needs of professional annotations. This paper use some NLP technique to text-mine data from associated radiological reports and presents a **new chest database named "ChestX-ray8"** comprising a large amount of labeled data (around 109k images with 33k unique patients).
+
 Besides the provided dataset, the authors also presents **unified framework** to solve a weakly-supervised multi-label image classification and pathology localization problem.
 
 ----
 ## Database constuction
 
+### Existing approach
+- DNorm
+- MetaMap
+
+**Negation and Uncertainty** problem:
+
+### Proposed approach
+<p align="center">
+  <img src="https://i.imgur.com/sw6Fx8o.png" width="400">
+</p>
+
 ### Results
 <p align="center">
   <img src="https://i.imgur.com/TWSeUum.png" width="400">
 </p>
+The results are qualitaively compared to the existing method MetaMap on OpenI datasets and shows better performance on all classes.
 
 ## Unified framework
 ![](https://i.imgur.com/eo6bR7e.png)
-<br>
 
 ### ImageNet pre-trained models
 E.g. AlexNet, GoogleNet, VGGNet-16, ResNet-50, but leaved only the CNN parts and take off the last classfication parts (fully-connected layers)
-<br>
 
 ### Transition layer
 A set of convolutional layers to make to transform the activation of different pre-trained CNN architecture to the same shape
-<br>
 
 ### Pooling layer: spatially global pooling
 - Log-Sum-Exp(LSE) pooling
