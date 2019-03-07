@@ -1,0 +1,16 @@
+# [Paper reading] ChestX-ray8
+ChestX-ray8: Hospital-scale Chest X-ray Database and Benchmarks on Weakly-Supervised Classification and Localization of Common Thorax Diseases
+
+Xiaosong Wang, Yifan Peng, Le Lu, Zhiyong Lu, Mohammadhadi Bagheri, and Ronald M. Summers, CVPR 2017
+
+## Poblem Definition
+
+
+## Contribution
+
+
+## Method
+
+
+## Conclusion
+
