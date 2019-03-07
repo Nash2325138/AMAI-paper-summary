@@ -11,10 +11,35 @@ Besides the provided dataset, the authors also presents **unified framework** to
 ### Database constuction
 
 #### Results
-![](https://i.imgur.com/TWSeUum.png)
+<p align="center">
+  <img src="https://i.imgur.com/TWSeUum.png" width="400">
+</p>
 
 ### Unified framework
 ![](https://i.imgur.com/eo6bR7e.png)
+
+#### Transition layer
+A set of convolutional layers to make to transform the activation of different pre-trained CNN architecture to the same shape
+
+#### Pooling layer: spatially global pooling
+- Log-Sum-Exp(LSE) pooling
+<p align="center">
+  <img src="https://i.imgur.com/BfTY9Lp.png" width="400">
+</p>
+
+- Improved LSE pooling (to prevent underflow/overflow problem) is used instead of regular LSE
+<p align="center">
+  <img src="https://i.imgur.com/mYGzuir.png" width="400">
+</p>
+
+#### Prediction layer
+A fully connected layer from globally pooled features to 8 disease scores.
+
+#### Multi-label Classification Loss
+While regular cross entropy loss (CEL) can be applied, the paper uses weighted CEL (W-CEL) to deal with the negative-dominated dataset.
+<p align="center">
+  <img src="https://i.imgur.com/oJbbaqv.png" width="400">
+</p>
 
 #### Results
 ![](https://i.imgur.com/7vbNhOE.png)
