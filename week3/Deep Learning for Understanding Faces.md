@@ -92,13 +92,59 @@ Two  major  components
 1. Robust  face  representation
 2. A discriminative  classification  model (face  identification) or  similarity  measure  (face  verification).
 
-### Feature learning
+### Feature Learning
 Tradictional methods: handcrafted features
+
+#### Transfer learning
 - [Huang et al.](https://ieeexplore.ieee.org/abstract/document/6247968) learns from an unlabeled images (unsupervised), and then transfers the learned representation to a identification/verification task through classification  models (e.g., SVM) and metric-learning approaches (e.g., OSS).
+
+#### Deeper or wider networks
 - [DeepFace](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html) derives a face  representation  using  a  nine-layer  deep  neural  network (\~ 120M parameters)
-- **DeepID frameworks** use ensemble of shallower and smaller deep  convolutional  networks to learn discrimina-tive  and  informative  face  representation (first one that surpass human performance on LFW)
+- **DeepID frameworks** use ensemble of shallower and smaller deep  convolutional  networks to learn discriminative  and  informative  face  representation (first one that surpass human performance on LFW)
+
+#### Embedding, unsupervised
 - [FaceNet](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Schroff_FaceNet_A_Unified_2015_CVPR_paper.html) directly optimizes the embedding itself
-- [CASIA-WebFace]()
+
+#### New large scael dataset
+- [CASIA-WebFace](https://arxiv.org/abs/1411.7923) collected 494,414 face images for 10,575 subjects from the IMDB website, which is widely  used  to  train  various  DCNN  models in the face recognition community.
+- [VGGFace](http://cis.csuohio.edu/~sschung/CIS660/DeepFaceRecognition_parkhi15.pdf) consists  of  2.6  million  face  images  for  2,600  subjects. The  trained  DCNN model (triplet embedding) using VGGFace achieves comparable results on both still-face (i.e., LFW) and video-face [i.e., YouTube Faces ( Y T F )]data  sets  with  other SOTA
+
+#### Data variation, augmentation
+- [AbdAlmageed et  al.](https://ieeexplore.ieee.org/abstract/document/7477555) train separate DCNN models for different views to handle pose variations.
+- [Masi  et  al.](https://link.springer.com/chapter/10.1007/978-3-319-46454-1_35) use 3D  morphable  models to augment  the  CASIA-WebFace  data  set
+
+#### Improvement on loss function
+- [Ding  et.  al.](https://ieeexplore.ieee.org/abstract/document/7917252) fuse  the  deep  features by a new triplet loss function
+- [Wen  et.  al.](https://link.springer.com/chapter/10.1007/978-3-319-46478-7_31) proposed  a  new  loss  function that takes the centroid for each class into consideration and uses it as a regularization constraint to the softmax loss
+- [Liu et al.](http://openaccess.thecvf.com/content_cvpr_2017/html/Liu_SphereFace_Deep_Hypersphere_CVPR_2017_paper.html) proposed a novel angular loss based on the modified softmax loss
+- [Ranjan et al.](https://arxiv.org/abs/1703.09507) also trained with softmax loss  regularized  with  a  scaled  L-2norm  constraint
+
+#### Aggregation or fusion
+- [Yang et al.](http://openaccess.thecvf.com/content_cvpr_2017/html/Yang_Neural_Aggregation_Network_CVPR_2017_paper.html) proposed a neural aggregated network (NAN) to  perform  dynamically  weighted  aggregation on the features from multiple face images or face frames of a face video
+- [Bodla et al.](https://ieeexplore.ieee.org/abstract/document/7926654) proposed a fusion network to com-bine face representations from two different DCNN models
+
 ### Metric learning
+#### Supervised
+
+####
+
+## Implementation
+Face recognition can be divided into 2 tasks
+1. Face verification: determine if the two images if from the same person
+2. Face identification: find the subject's identity
+
+Face verification procedure
+1. Face localization and normalization to the canonical coordinate.
+2. Extract DCNN features
+3. Measure similarity (L2 for cosine)
+
+Face identification procedure
+1. Store the DCNN features of each data in the gallery
+2. Compute the feature representation and its similarity score with others in the database
+
+## Training datasets
+![](https://i.imgur.com/w6cYuxi.png)
+
+###
 
 ## Results
