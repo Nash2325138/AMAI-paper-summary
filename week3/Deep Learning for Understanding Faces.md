@@ -82,7 +82,7 @@ performance  depends  on  local descriptors
 - There are also several methods that apply multitask learning (MTL) by learning related tasks such as facial keypoint estimation for robustness, e.g. [Zhang et al.](https://ieeexplore.ieee.org/abstract/document/7553523/), [Chen et al.](https://link.springer.com/chapter/10.1007/978-3-319-46454-1_8), [Li et al.](https://link.springer.com/chapter/10.1007/978-3-319-46487-9_26), [HyperFace](https://ieeexplore.ieee.org/abstract/document/8170321/)
 
 ![](https://i.imgur.com/LcbpjWo.png)
-Comparative performance evaluation of different algorithms for the task of facial keypoint estimation on the AFW [55] data set
+Comparative performance evaluation of different algorithms for the task of facial keypoint estimation on the AFW [55]
 
 ----
 
@@ -96,12 +96,9 @@ Two  major  components
 Tradictional methods: handcrafted features
 - [Huang et al.](https://ieeexplore.ieee.org/abstract/document/6247968) learns from an unlabeled images (unsupervised), and then transfers the learned representation to a identification/verification task through classification  models (e.g., SVM) and metric-learning approaches (e.g., OSS).
 - [DeepFace](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html) derives a face  representation  using  a  nine-layer  deep  neural  network (\~ 120M parameters)
-
+- **DeepID frameworks** use ensemble of shallower and smaller deep  convolutional  networks to learn discrimina-tive  and  informative  face  representation (first one that surpass human performance on LFW)
+- [FaceNet](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Schroff_FaceNet_A_Unified_2015_CVPR_paper.html) directly optimizes the embedding itself
+- [CASIA-WebFace]()
 ### Metric learning
 
-## Problem Setting 
-
-## Method
-
-### Architecture
 ## Results
