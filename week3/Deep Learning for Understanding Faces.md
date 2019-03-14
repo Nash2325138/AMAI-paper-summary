@@ -25,50 +25,49 @@ Drawback:
 - Require additional computation on region proposal network
 
 ### Sliding-window based
-bounding-box coordinates at every location in a feature map at a given scale
-can be implemented using just a convolution operation that works in a sliding-window fashion
+Use bounding-box instead of proposed regions on a feature map to classify. It can be implemented using convolution operation (thereform it's usually faster)
+- [Single-shot detector (SSD)](https://link.springer.com/chapter/10.1007/978-3-319-46448-0_2) utilized natural pyramid structure in DCNNs
 
-- Single-shot detector (SSD)
-utilizes  the  inbuilt  pyramid  structure  present  in  DCNNs
-overall  computation  time  of  SSD  is  lower  than  faster  R-CNN
-
-### unconstrained face detection datasets
-- FDDB: 2,845 images containing a total of 5,171 faces col-lected from news articles on yahoo.com
+### Unconstrained face detection datasets
+- FDDB: 2,845 images containing a total of 5,171 faces collected from news articles on yahoo.com
 - MALF: 5,250 high-resolution images containing a total of 11,931 faces (collected from Flickr and an image search service provided by Baidu, Inc)
-- WIDER Face:  32,203  images,  with  50%  samples  for  training  and  10%  for  validation (larger variation, Face  detectors  trained  on  this  data  set  have  achieved  improved  performance  [19],  [23],  [28],  [29],  [32],  [33]) (results  for  this  data  set  reveal  that  finding  small  faces  in  the  crowd  is  still  challeng-ing.)
+- WIDER Face: 32,203 images, with 50% samples for training and 10% for validation.
 
 ----
 
-## Finding crucial facial keypoints and head orientation
-important  preprocessing  component
-- Facial  keypoints such as eye centers, nose tip, mouth corners: align the face into canonical coordinates
-- Head-pose  estimation: pose-based face  analysis
+## Finding facial keypoints and head orientation
+It's a important preprocessing step to align the face into canonical coordinates and pose-based face analysis. It can be classified into model-based and regression based approaches.
 
 Other surveys on tradictional methods
-- [Wang  et  al.](https://www.sciencedirect.com/science/article/pii/S0925231217308202) model-based methods
-- [Chrysos  et  al.](https://link.springer.com/article/10.1007/s11263-017-0999-5) fiducial detec-tion methods
+- [Wang et al.](https://www.sciencedirect.com/science/article/pii/S0925231217308202) for model-based methods
+- [Chrysos et al.](https://link.springer.com/article/10.1007/s11263-017-0999-5) for fiducial detection methods
 
-Here authors focus on methods based on DCNNs.
+Here authors focus on those based on DCNNs.
 
 ### Model based
-- [Antonakos  et  al.](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Antonakos_Active_Pictorial_Structures_2015_CVPR_paper.html) modeling the appearance of the object using multiple  graph-based  pairwise  normal  distributions  (Gaussian  Markov  random  field)  between  patches  extracted  from  the  regions (fails in high variations data)
-- [PIFA](http://openaccess.thecvf.com/content_iccv_2015/html/Jourabloo_Pose-Invariant_3D_Face_ICCV_2015_paper.html) 3-D face alignment, cascaded regression to predict the coefficients of a 3-D to 2-D projection matrix and the  base  shape  coefficients
-- [Jour-abloo et  al.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Jourabloo_Large-Pose_Face_Alignment_CVPR_2016_paper.html) formulated  the  face  alignment  problem  as  a  dense 3-D model-fitting problem, where the camera projection matrix and 3-D shape parameters were estimated by a cascade of DCNN-based regressors
+- [Antonakos et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Antonakos_Active_Pictorial_Structures_2015_CVPR_paper.html) models the appearance of the object using multiple graph-based pairwise normal distributions between patches extracted from the regions (but failed in high variations data)
+- [PIFA](http://openaccess.thecvf.com/content_iccv_2015/html/Jourabloo_Pose-Invariant_3D_Face_ICCV_2015_paper.html) performs 3D face alignment with cascaded regression to predict the coefficients of a 3D to 2D projection matrix.
+- [Jour-abloo et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Jourabloo_Large-Pose_Face_Alignment_CVPR_2016_paper.html) formulated the face alignment problem as a dense 3-D model-fitting problem, where the camera projection matrix and 3-D shape parameters were estimated by a cascade of DCNN-based regressors.
 
 ### Cascaded regression based
-face  alignment  is  naturally  a  regression  problem
-learn  a  model  that  directly maps the image appearance to the target output
-performance  depends  on  local descriptors
+Face alignment is naturally a regression problem, hense there are learn  a  model that  directly maps the image appearance to the target output
 
-- [Sun et al.](http://openaccess.thecvf.com/content_cvpr_2013/html/Sun_Deep_Convolutional_Network_2013_CVPR_paper.html) DCNNs  in  which,  at  each  level,  outputs  of  multiple  networks  are  fused  for  landmark  estima-tion  and  achieve  good  performance.
-- [Zhang  et  al.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.702.1120&rep=rep1&type=pdf) coarse-to-fine autoencoder networks approach using successive  stacked  autoencoder  networks (SANs)
-- [Kumar  et  al.](https://arxiv.org/abs/1601.07950) single DCNNs, but with better performance
-- [Xiong et al.](http://openaccess.thecvf.com/content_cvpr_2015/html/Xiong_Global_Supervised_Descent_2015_CVPR_paper.html) suggested domain-dependent descent maps
-- [Zhu et al.](http://openaccess.thecvf.com/content_cvpr_2016/html/Zhu_Unconstrained_Face_Alignment_CVPR_2016_paper.html) proposed  CCL to develop  head-pose-based  and  domain-selective  regressors  by  partitioning  the  optimization  domain  into multiple directions based on head pose and combining the results of multiple domain regressors through the composition estimator function
-- [Trigeorgis et al.](http://openaccess.thecvf.com/content_cvpr_2016/html/Trigeorgis_Mnemonic_Descent_Method_CVPR_2016_paper.html)  combined and  jointly  trained  convolutional  recurrent  neural  network in  the  cascaded  regression  framework
-- [Bulat et al.](http://eprints.nottingham.ac.uk/37236/) uses DCNN  features to roughly  localize facial landmarks, followed by a regression branch to refine the detection results.
+#### Works that introduce DCNN to solve the regression problems
+- [Sun et al.](http://openaccess.thecvf.com/content_cvpr_2013/html/Sun_Deep_Convolutional_Network_2013_CVPR_paper.html) fused multiple DCNNs for landmark  estimation.
+- [Zhang et al.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.702.1120&rep=rep1&type=pdf) design a coarse-to-fine autoencoder networks using successive  stacked  autoencoder  networks (SANs)
+- [Kumar et al.](https://arxiv.org/abs/1601.07950) used only single DCNNs, but with better performance.
+
+#### Architecture or training techniques improvements
+- [Xiong et al.](http://openaccess.thecvf.com/content_cvpr_2015/html/Xiong_Global_Supervised_Descent_2015_CVPR_paper.html) suggested domain-dependent descent maps.
+- [Zhu et al.](http://openaccess.thecvf.com/content_cvpr_2016/html/Zhu_Unconstrained_Face_Alignment_CVPR_2016_paper.html) developped head-pose-based and domain-selective regressors.
+- [Trigeorgis et al.](http://openaccess.thecvf.com/content_cvpr_2016/html/Trigeorgis_Mnemonic_Descent_Method_CVPR_2016_paper.html) jointly trained convolutional recurrent NN in the cascaded  regression framework.
+- [Bulat et al.](http://eprints.nottingham.ac.uk/37236/) uses DCNN features to roughly localize facial landmarks, followed by a regression branch to refine the detection results.
 - [Kumar et al.](https://ieeexplore.ieee.org/abstract/document/7961750/) iteratively estimates keypoint and predicts pose by  learning heat-map-based DCNN regressors for the face alignment.
-- 300  Faces  in  the  Wild  data-base  (300  W) collects several datasets to provide 12,000 images annotated with  68  landmarks
+
+#### A New large dataset
+- 300 Faces in the Wild data-base (300  W) combined several datasets to provide 12,000 images annotated with  68  landmarks
+
+#### Multitask learning
 - There are also several methods that apply multitask learning (MTL) by learning related tasks such as facial keypoint estimation for robustness, e.g. [Zhang et al.](https://ieeexplore.ieee.org/abstract/document/7553523/), [Chen et al.](https://link.springer.com/chapter/10.1007/978-3-319-46454-1_8), [Li et al.](https://link.springer.com/chapter/10.1007/978-3-319-46487-9_26), [HyperFace](https://ieeexplore.ieee.org/abstract/document/8170321/)
 
 ![](https://i.imgur.com/LcbpjWo.png)
@@ -86,26 +85,26 @@ Two  major  components
 Tradictional methods: handcrafted features
 
 #### Transfer learning
-- [Huang et al.](https://ieeexplore.ieee.org/abstract/document/6247968) learns from an unlabeled images (unsupervised), and then transfers the learned representation to a identification/verification task through classification  models (e.g., SVM) and metric-learning approaches (e.g., OSS).
+- [Huang et al.](https://ieeexplore.ieee.org/abstract/document/6247968) learns from an unlabeled images (unsupervised), and then transfers the learned representation to a identification/verification task through classification/metric-learning models.
 
 #### Deeper or wider networks
-- [DeepFace](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html) derives a face  representation  using  a  nine-layer  deep  neural  network (\~ 120M parameters)
-- **DeepID frameworks** use ensemble of shallower and smaller deep  convolutional  networks to learn discriminative  and  informative  face  representation (first one that surpass human performance on LFW)
+- [DeepFace](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html) used nine-layer deep neural network to obtain face representation (\~ 120M parameters)
+- **DeepID frameworks** use ensemble of shallower and smaller deep convolutional networks to learn face representation (first one that surpass human performance on LFW)
 
 #### Embedding, unsupervised
 - [FaceNet](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Schroff_FaceNet_A_Unified_2015_CVPR_paper.html) directly optimizes the embedding itself
 
 #### New large scael dataset
-- [CASIA-WebFace](https://arxiv.org/abs/1411.7923) collected 494,414 face images for 10,575 subjects from the IMDB website, which is widely  used  to  train  various  DCNN  models in the face recognition community.
-- [VGGFace](http://cis.csuohio.edu/~sschung/CIS660/DeepFaceRecognition_parkhi15.pdf) consists  of  2.6  million  face  images  for  2,600  subjects. The  trained  DCNN model (triplet embedding) using VGGFace achieves comparable results on both still-face (i.e., LFW) and video-face [i.e., YouTube Faces ( Y T F )]data  sets  with  other SOTA
+- [CASIA-WebFace](https://arxiv.org/abs/1411.7923) has 494,414 face images for 10,575 subjects from the IMDB website.
+- [VGGFace](http://cis.csuohio.edu/~sschung/CIS660/DeepFaceRecognition_parkhi15.pdf) consists of 2.6 million face images for 2,600 subjects. The  trained  DCNN model (triplet embedding) using VGGFace achieves comparable results on both still-face (i.e., LFW) and video-face (i.e., YTF) datasets with other SOTAs.
 
 #### Data variation, augmentation
-- [AbdAlmageed et  al.](https://ieeexplore.ieee.org/abstract/document/7477555) train separate DCNN models for different views to handle pose variations.
-- [Masi  et  al.](https://link.springer.com/chapter/10.1007/978-3-319-46454-1_35) use 3D  morphable  models to augment  the  CASIA-WebFace  data  set
+- [AbdAlmageed et al.](https://ieeexplore.ieee.org/abstract/document/7477555) train separate DCNN models for different views to handle pose variations.
+- [Masi et al.](https://link.springer.com/chapter/10.1007/978-3-319-46454-1_35) use 3D morphable models to augment the CASIA-WebFace dataset.
 
 #### Improvement on loss function
-- [Ding  et.  al.](https://ieeexplore.ieee.org/abstract/document/7917252) fuse  the  deep  features by a new triplet loss function
-- [Wen  et.  al.](https://link.springer.com/chapter/10.1007/978-3-319-46478-7_31) proposed  a  new  loss  function that takes the centroid for each class into consideration and uses it as a regularization constraint to the softmax loss
+- [Ding et. al.](https://ieeexplore.ieee.org/abstract/document/7917252) fuse the deep features by a new triplet loss function.
+- [Wen  et.  al.](https://link.springer.com/chapter/10.1007/978-3-319-46478-7_31) proposed a new loss function that takes the centroid for each class into consideration and uses it as a regularization constraint to the softmax loss
 - [Liu et al.](http://openaccess.thecvf.com/content_cvpr_2017/html/Liu_SphereFace_Deep_Hypersphere_CVPR_2017_paper.html) proposed a novel angular loss based on the modified softmax loss
 - [Ranjan et al.](https://arxiv.org/abs/1703.09507) also trained with softmax loss  regularized  with  a  scaled  L-2norm  constraint
 
@@ -144,6 +143,3 @@ Face identification procedure
 ![](https://i.imgur.com/abZHs14.png)
 ![](https://i.imgur.com/urbmfjE.png)
 ![](https://i.imgur.com/JKHLhsy.png)
-
-
-## Results
