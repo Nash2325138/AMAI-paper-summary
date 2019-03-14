@@ -3,36 +3,26 @@
 Rajeev Ranjan, Swami Sankaranarayanan, Ankan Bansal, Navaneeth Bodla, Jun-Cheng Chen, Vishal M. Patel, Carlos D. Castillo, and Rama Chellappa
 
 ## Introduction
-Survey paper
+This is a survey paper that provides an overview of deep-learning methods for face recognition problem, including **face identification** and **verification** systems based on deep learning.
 
-In this article, we provide an overview of deep-learning methods used for  face  recognition.  We  discuss  different  modules  involved  in  designing an automatic face recognition system and the role of deep  learning  for  each  of  them
+Tradictional methods degrades  significantly on data that have large variations in pose, illu-mination, resolution,  expression, age, background clutter, and occlusion, while deep learning trained with large amount is more robust to these variations and can extract more meaningful features.
 
-In  this  article,  we  present  an  overview  of  recent  automatic  **face identification** and **verification** systems based on *deep learning*.
-
-Traditional:
-1. face detector
-2. localize the important facial landmarks -> align faces
-3. feature descriptor -> similarity scores
-work well on images, degrades  significantly  on face images or videos that have large variations in pose, illu-mination,  resolution,  expression,  age,  background  clutter,  and  occlusion.
-
-Deep learning:
-large amount of training data represents significant variations in pose, illumination, expression, and occlusion, which enables the DCNNs to be robust to these variations and extract meaningful features required for the task.
+Face recognition's procedure can factorized into the following steps
+1. Face detection
+2. Facial Landmarks localization (to align faces)
+3. Feature descriptor (for similarity scores)
 
 ----
 
 ## Face detection
-first step in an automatic face recognition system
-traditional methods (e.g. HOG) do not capture salient facial information when variation is high (resolution, viewpoint, illumination...)
-DCNN pretrained with a large generic  data  set  can  be  used  as  a  meaningful  feature  extractor
+It's the first step in a face recognition system
 
 ### Region based
-classify whether or not a given proposal contains a face
-
-- Faster R-CNN
+Propose several regions and classify whether or not a given proposal contains a face, e.g., faster R-CNN
 
 Drawback:
-- difficult faces are hard to capture in any object proposal
-- additional computation on RPN
+- "Difficult faces" may not be captured on object proposal stage.
+- Require additional computation on region proposal network
 
 ### Sliding-window based
 bounding-box coordinates at every location in a feature map at a given scale
@@ -142,9 +132,18 @@ Face identification procedure
 1. Store the DCNN features of each data in the gallery
 2. Compute the feature representation and its similarity score with others in the database
 
-## Training datasets
+## Training data
+
+### Datasets comparison
 ![](https://i.imgur.com/w6cYuxi.png)
 
-###
+### Training data property analization
+- [Bansal  et  al.](http://openaccess.thecvf.com/content_ICCV_2017_workshops/w37/html/Bansal_The_Dos_and_ICCV_2017_paper.html) studied found a combination of still images and video can help with DCNN compared to the one only trained on still images of only on video frames.
+
+## Performance summary
+![](https://i.imgur.com/abZHs14.png)
+![](https://i.imgur.com/urbmfjE.png)
+![](https://i.imgur.com/JKHLhsy.png)
+
 
 ## Results
