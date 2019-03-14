@@ -45,8 +45,7 @@ Other surveys on traditional methods
 Here authors focus on those based on DCNNs.
 
 ### Model based
-- [Antonakos et al.](https://www.cv
--foundation.org/openaccess/content_cvpr_2015/html/Antonakos_Active_Pictorial_Structures_2015_CVPR_paper.html) models the appearance of the object using multiple graph-based pairwise normal distributions between patches extracted from the regions (but failed in high variations data)
+- [Antonakos et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Antonakos_Active_Pictorial_Structures_2015_CVPR_paper.html) models the appearance of the object using multiple graph-based pairwise normal distributions between patches extracted from the regions (but failed in high variations data)
 - [PIFA](http://openaccess.thecvf.com/content_iccv_2015/html/Jourabloo_Pose-Invariant_3D_Face_ICCV_2015_paper.html) performs 3D face alignment with cascaded regression to predict the coefficients of a 3D to 2D projection matrix.
 - [Jour-abloo et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Jourabloo_Large-Pose_Face_Alignment_CVPR_2016_paper.html) formulated the face alignment problem as a dense 3-D model-fitting problem, where the camera projection matrix and 3-D shape parameters were estimated by a cascade of DCNN-based regressors.
 
