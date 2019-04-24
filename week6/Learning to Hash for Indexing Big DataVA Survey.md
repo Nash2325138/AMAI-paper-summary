@@ -6,8 +6,7 @@ This is a survey paper about **learning to  hash**  framework  and  representati
 ----
 
 ## Background information
-![Notation](./doc/T1_notations.png)
-
+<img src="./doc/T1_notations.png" width=650>
 ### Pipeline
 1. Design hash functions
 2. Generate hashcodes and indexing the database items
@@ -18,7 +17,7 @@ This is a survey paper about **learning to  hash**  framework  and  representati
 
 ## Randomized Hashing
 ### Random Projection Based
-![](https://i.imgur.com/eECAgH7.png)
+<img src="https://i.imgur.com/eECAgH7.png" width=400>
 
 ### Random Permutation based Hashing
 
@@ -29,7 +28,7 @@ A. Data-Dependent vs.  Data-Independen
 B. Unsupervised, Supervised, and Semi-Supervised
 
 C. Pointwise, Pairwise, Triplet-wise and Listwise
-![](./doc/f4.png)
+<img src="/doc/f4.png" width=400>
 
 D. Linear vs. Nonlinear
 
@@ -38,37 +37,37 @@ E. Single-Shot Learning vs. Multiple-Shot Learning
 F. Non-Weighted vs.  Weighted Hashing
 
 ## Prior methods
-![](./doc/t2.png)
-![](./doc/f6.png)
+<img src="/doc/t2.png" width=600>
+<img src="/doc/f6.png" width=400>
 
 A.  Spectral Hashing
 
 B.  Anchor Graph Hashing
 
 C.  Angular Quantization Based Hashing
-![](./doc/f7.png)
+<img src="/doc/f7.png" width=400>
 
 D.  Binary Reconstructive Embedding
 
 E.  Metric Learning based Hashing
-![](./doc/f8.png)
+<img src="/doc/f8.png" width=400>
 
 F.  Semi-Supervised Hashing
-![](./doc/f9.png)
+<img src="/doc/f9.png" width=400>
 
 G.  Column Generation Hashing
 
 H.  Ranking Supervised Hashin
-![](./doc/f10.png)
+<img src="/doc/f10.png" width=400>
 
 I.  Circulant Binary Embedding
 
 ## Deep learning methods
-![](./doc/t3.png)
+<img src="/doc/t3.png" width=400>
 
 ## Advanced Methods
 A.  Hyperplane Hashing
-![](./doc/f13.png)
+<img src="/doc/f13.png" width=400>
 
 B.  Subspace Hashing
 
