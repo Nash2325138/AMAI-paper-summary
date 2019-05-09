@@ -9,7 +9,7 @@ This is a survey paper about **dimensionality reduction** methods (e.g. PCA, LDA
 ![](https://i.imgur.com/tBp7cgu.png)
 
 ### Definitions
-F: x -> y, x \in R^n, y \in R^m, where m << n
+F: x -> y, x in R^n, y in R^m, where m << n
 ![](https://i.imgur.com/wZkOthD.png)
 
 ### Optimization goal
@@ -75,4 +75,11 @@ The most obvious pros it that MFA does not **assume any data distribution**
 Also, MFA can be augmented by introducing **kernalization** and **tensorlization** to form a more powerful and general method.
 
 ## Experiments
+### Separability of the lower dimensional representation (MFA v.s. LDA)
+Datasets: XM2VTS , CMU PIE, and ORL
 
+### Face recognition task (MFA v.s. other compression methods)
+Datasets: e XM2VTS, CMU PIE, and ORL
+![](https://i.imgur.com/UgZwDo4.png)
+![](https://i.imgur.com/VbOYA0x.png)
+![](https://i.imgur.com/TWLngAw.png)
