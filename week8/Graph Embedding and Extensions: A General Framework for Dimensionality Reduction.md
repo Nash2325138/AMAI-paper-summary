@@ -1,11 +1,12 @@
-# [Paper reading] Learning to Hash for Indexing Big DataVA Survey
+# [Paper reading] Graph Embedding and Extensions: A General Framework for Dimensionality Reduction
 
 ## Introduction
-This is a survey paper about **learning to  hash**  framework  and  representative  techniques  of  various types, including **unsupervised, semi-supervised, and supervised**. 
+This is a survey paper about **dimensionality reduction** methods (e.g. PCA, LDA, LPP, ISOMAP, LLE) framework under an general **graph embedding** formulation. It also presented a new supervised approach called **Marginal Fisher Analysis**.
 
 ----
 
-## Background information
+## 
+unified graph embedding formulation alongwith its linearization, kernelization, and tensorization forgeneral dimensionality reduction
 
 ## Prior methods
 
