@@ -52,12 +52,27 @@ The following **dimension reduction** works can actually reformulated by the gra
 - LLE and LEA
 - Laplacian Eigenmap
 
-## Motivations of studying hashing
+## Related work
+There are several works related or similar to this paper, but the author claims they are eighther less general or starting from a different aspects.
 
-## High-level overview of learning-based hashing methods
+## Marginal Fisher Analysis
 
-## Learning to hash framework
+Flaws of LDA: the "separability" can only be modeled when we assumes data is sampled from a Gaussian distribution. 
+Marginal Fisher Analysis (MFA) designs an **intrinsic graph** for **intraclass compactness** and another **penalty graph** for **interclass separability** (see figure below)
+![](https://i.imgur.com/E3NPaQL.png)
 
-## Deep learning methods
+MFA steps:
+1. Apply PCA to project (linearly) data to lower dimensions space
+2. 
+   a. intrinsic graph: assign edge for (i, j) if class(i) = class(j) and i is one of k1 nearest neibor of j
+   b. penalty graph: assign edge for (i, j) if class(i) != class(j) and i is one of k2 nearest neibor of j
+3. Following the graph embedding framework, the criterion is
+![](https://i.imgur.com/DUUVVd5.png)
+with B = D^p - W^p
 
-## Open issues
+The most obvious pros it that MFA does not **assume any data distribution**
+
+Also, MFA can be augmented by introducing **kernalization** and **tensorlization** to form a more powerful and general method.
+
+## Experiments
+
