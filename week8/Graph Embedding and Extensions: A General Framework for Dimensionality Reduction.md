@@ -6,19 +6,21 @@ This is a survey paper about **dimensionality reduction** methods (e.g. PCA, LDA
 ----
 
 ## Unified graph embedding formulation
-![](https://i.imgur.com/tBp7cgu.png)
+<img src="https://i.imgur.com/tBp7cgu.png" width=400>
 
 ### Definitions
 F: x -> y, x in R^n, y in R^m, where m << n
-![](https://i.imgur.com/wZkOthD.png)
+
+<img src="https://i.imgur.com/wZkOthD.png" width=500>
 
 ### Optimization goal
-![](https://i.imgur.com/UCYFm6d.png)
+<img src="https://i.imgur.com/UCYFm6d.png" width=500>
 where, d is constant, B is constant matrix
 
 ### Linearization: F: x -> y = W^T * x
 The optimization becomes
-![](https://i.imgur.com/ymBs5wD.png)
+
+<img src="https://i.imgur.com/ymBs5wD.png" width=500>
 
 Efficient, but performance not easy to scale.
 
@@ -27,10 +29,11 @@ kernel k(xi, xj) = phi(xi) * phi(xj)
 mapping direction w = sum_i(alpha_i * phi(xi))
 -> kernel Gram Matrix K_i,j = phi(xi) * phi(xj)
 The optimization becomes
-![](https://i.imgur.com/2DveVR8.png)
+
+<img src="https://i.imgur.com/2DveVR8.png" width=500>
 
 ### Optimization solution
-![](https://i.imgur.com/QuJHITu.png)
+<img src="https://i.imgur.com/QuJHITu.png" width=500>
 
 ### Tensorization
 Vertix representation could also be matrix (second-order tensor) like image or even third-order tensor like video.
@@ -59,7 +62,8 @@ There are several works related or similar to this paper, but the author claims 
 
 Flaws of LDA: the "separability" can only be modeled when we assumes data is sampled from a Gaussian distribution. 
 Marginal Fisher Analysis (MFA) designs an **intrinsic graph** for **intraclass compactness** and another **penalty graph** for **interclass separability** (see figure below)
-![](https://i.imgur.com/E3NPaQL.png)
+
+<img src="https://i.imgur.com/E3NPaQL.png" width=500>
 
 MFA steps:
 1. Apply PCA to project (linearly) data to lower dimensions space
@@ -80,6 +84,7 @@ Datasets: XM2VTS , CMU PIE, and ORL
 
 ### Face recognition task (MFA v.s. other compression methods)
 Datasets: e XM2VTS, CMU PIE, and ORL
-![](https://i.imgur.com/UgZwDo4.png)
-![](https://i.imgur.com/VbOYA0x.png)
-![](https://i.imgur.com/TWLngAw.png)
+
+<img src="https://i.imgur.com/UgZwDo4.png" width=500>
+<img src="https://i.imgur.com/VbOYA0x.png" width=500>
+<img src="https://i.imgur.com/TWLngAw.png" width=500>
