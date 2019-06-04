@@ -1,13 +1,13 @@
 # Efficient Convolutional Neural Networks for Mobile Vision Applications
 
 ## Introduction
-This is the paper where Google propose the **MobileNets** architecture which focuses on improving model efficiency, including network size and runtime speed.
-The proposed method also provide hyper-parameters to allow developers to choose the right size for their application.
+This is the paper where Google proposes the **MobileNets** architecture which focuses on improving model efficiency, including network size and runtime speed.
+The proposed method also provides hyper-parameters to allow developers to choose the right size for their application.
 
 ---
 
 ## Prior work
-Some privious approaches tried to **compress the network** or **train a smaller network** directly. Some used quantization of factorization to acheach smaller networks.
+Some previous approaches tried to **compress the network** or **train a smaller network** directly. Some used quantization or factorization to achieve smaller networks.
 
 ## Depthwise Separable Convolution
 The core layer of MobileNet is **Depthwise Separable Convolution**, which is a convolution factorized into **depthwisely** and **pointwisely** as illustrated below.
@@ -33,10 +33,10 @@ The overall architecture is described in this table:
 <img src="https://i.imgur.com/HWpdqyG.png" width=300>
 
 ## Hyper-parameters
-The parameters that determine the size of MobileNet include **width multiplier** alpha and **resolution multiplier** ro, which reduce the **channel number** and **feature width/height** uniformly on each convolution layer to acheave smaller and faster model.
+The parameters that determine the size of MobileNet include **width multiplier** alpha and **resolution multiplier** ro, which reduce the **channel number** and **feature width/height** uniformly on each convolution layer to achieve smaller and faster model.
 
 ## Experiments
-The authors provide plenty of experiments to justify the their contribution, including abundent ablation studies:
+The authors provide plenty of experiments to justify their contribution, including abundant ablation studies:
 
 <img src="https://i.imgur.com/HjZ5ng3.png" width=350>
 
@@ -44,6 +44,21 @@ The authors provide plenty of experiments to justify the their contribution, inc
 <img src="https://i.imgur.com/iYORY9v.png" width=250> <img src="https://i.imgur.com/t3hqIMD.png" width=250>
 
 ### Comparison with popular (performance oriented / compression oriented)
+<img src="https://i.imgur.com/RCfzcEj.png" width=350>
+
+#### With different hyper-parameters
+<img src="https://i.imgur.com/RqD95xn.png" width=350>
+
+### Comparison with other SOTAs on other tasks
+- PlaNet
+<img src="https://i.imgur.com/r4apvLn.png" width=300>
+
+- Stanford Dogs (fine grained)
+<img src="https://i.imgur.com/PBSWFFX.png" width=300>
+
+- COCO object detection
+<img src="https://i.imgur.com/bDXTdQl.png" width=300>
+
 
 ## Conclusion
-The paper proposed a computationally and spatially efficient model that is flexibly comfigurable.
+The paper proposed a computationally and spatially efficient model that is flexibly configurable. Quite enough experiments are provided, and the result is convincing.
