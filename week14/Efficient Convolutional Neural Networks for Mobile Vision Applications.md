@@ -36,7 +36,14 @@ The overall architecture is described in this table:
 The parameters that determine the size of MobileNet include **width multiplier** alpha and **resolution multiplier** ro, which reduce the **channel number** and **feature width/height** uniformly on each convolution layer to acheave smaller and faster model.
 
 ## Experiments
-The authors provide plenty of experiments to justify the 
+The authors provide plenty of experiments to justify the their contribution, including abundent ablation studies:
+
+<img src="https://i.imgur.com/HjZ5ng3.png" width=350>
+
+### Trade off between accuracy and model size / operation count
+<img src="https://i.imgur.com/iYORY9v.png" width=250> <img src="https://i.imgur.com/t3hqIMD.png" width=250>
+
+### Comparison with popular (performance oriented / compression oriented)
 
 ## Conclusion
 The paper proposed a computationally and spatially efficient model that is flexibly comfigurable.
