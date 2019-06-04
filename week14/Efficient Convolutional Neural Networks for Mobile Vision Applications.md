@@ -30,4 +30,13 @@ The MobileNet architecture is composed of Depthwise Separable convolutions with 
 
 The overall architecture is described in this table:
 
-<img src="https://i.imgur.com/HWpdqyG.png" width=300 align=center>
+<img src="https://i.imgur.com/HWpdqyG.png" width=300>
+
+## Hyper-parameters
+The parameters that determine the size of MobileNet include **width multiplier** alpha and **resolution multiplier** ro, which reduce the **channel number** and **feature width/height** uniformly on each convolution layer to acheave smaller and faster model.
+
+## Experiments
+The authors provide plenty of experiments to justify the 
+
+## Conclusion
+The paper proposed a computationally and spatially efficient model that is flexibly comfigurable.
