@@ -45,12 +45,14 @@ The drawback: implementation is not easy because of a decomposition operation. C
 
 ## Transferred/compact convolutional filters
 The idea of using **transferred convolutional filters** to compress CNN models is motivated by recent works in [this paper](http://proceedings.mlr.press/v48/cohenc16.pdf). Following works inlcudes techniques like building a convolutional layer from a set of base filters.
+
 Drawback: achieve competitive performance for wide/flat architectures (like VGGNet) but not narrow/special ones (like GoogleNet and ResNet); assumptions too strong.
 
 <img src="https://i.imgur.com/xnVVvoJ.png" width=300>
 
 ## Knowledge distilation (KD)
 KD is to compress deep and wide networks into shallower ones. [This work](https://arxiv.org/abs/1503.02531) introduced a KD compression framework, which eased the training of deep networks by following a student-teacher paradigm. Several works follows it but compression is done in terms of wide or depth.
+
 Some also propose method to preserve knowledge in neurons instead of softened data. Some accelerate the training time or relax the assumption used in FitNet.
 
 The Drawback: KD can only be applied to classification tasks with softmax loss function.
