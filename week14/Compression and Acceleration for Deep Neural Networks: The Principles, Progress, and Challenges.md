@@ -61,3 +61,5 @@ The Drawback: KD can only be applied to classification tasks with softmax loss f
 - Global average pooling  reduce the number of parameters of the fully connected layer.
 - [Stochastic depth](https://link.springer.com/chapter/10.1007/978-3-319-46493-0_39) enabled the seemingly contradictory setup to train short networks and used deep networks at test time.
 -  [FFT-based convolutions](https://arxiv.org/abs/1312.5851) and [Winograd algorithm](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Lavin_Fast_Algorithms_for_CVPR_2016_paper.html) reduce the convolutional overheads.
+
+<img src="https://i.imgur.com/CeoJ9mn.png" width=300>
