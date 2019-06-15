@@ -30,5 +30,39 @@ as the human attribute) show that using human attributes can help the face retri
 <img src="https://i.imgur.com/4ofApi9.png" width=350>
 
 ## Proposed method
+
+### System architecuture
 <img src="https://i.imgur.com/1udgZfb.png" width=800>
+The caption in the figure nicely describes the overall system architecture and the processing flow:
+
+```
+Both query and database images will go through the same procedures including face detection,
+facial landmark detection, face alignment, attribute detection, and LBP feature extraction.
+
+Attribute-enhanced sparse coding is used to find sparse codewords of database images globally in the offline stage.
+Codewords of the query image are combined locally with binary attribute signature to traverse the attribute-embedded
+inverted index in the online stage and derive real-time ranking results over database images.
+```
+
+### Attribute-Enhanced Sparse Coding (ASC)
+ASC is realized by optimizing the following objective:
+
+<img src="https://i.imgur.com/Qgupe76.png" width=450>
+
+Notion: dictionary D and sparse feature encoding V. Then, a feature is a linear combination of
+the column vectors of the dictionary.
+
+A few of details:  different spatial grids := 175, #centrois K := 1600.
+Therefore, the vocabulary size will be 175 * 1600 = 280000
+
+### Attribute-Enhanced Sparse Coding
+First proposal: dictionary selection (ASC-D) force images with different attribute values to contain different codewords by using different subsets for postive and negative samples separately (as illustrated below):
+<img src="https://i.imgur.com/7adOMQh.png" width=250>
+
+(For attributes with multiple values, it simply devides multple subsets for different values.)
+
+This goal can be formulated as:
+
+<img src="https://i.imgur.com/r1GFfxe.png" width=450>
+
 
