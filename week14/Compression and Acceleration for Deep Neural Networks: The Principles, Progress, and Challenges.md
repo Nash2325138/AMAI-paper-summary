@@ -28,5 +28,20 @@ to the original network.
 ### Pruning and sharing
 The idea in **pruning** and **weight sharing** is that there are ussually unused or non-informative weights hidden inside a large netwrok.
 By pruning those weights of the networks, not only the complexity but also overfitting issues could be mitigated.
+Adding **sparsity constraints** is also a popular option, e.g. otimizing the networks with L0 or L1 regularizers.
 
+The drawback: some regularization requires more iterations to converge. Furthermore, all pruning criteria
+require manual setup of sensitivity for layers, which is cumbersome.
 
+### Designing the structural matrix
+In fully-connected layers f(x, M) = sigma(Mx), the #parameters of M (= mn) and computational time (= O(mn)) is high. An m by n matrix that can be described using much fewer parameters than mn is called a *structured* matrix.
+The drawback: loss in accuracy & no theoretical way to find a proper structural matrix.
+
+## Low-rank factorization and sparsity
+Idea: there might be a significant amount of redundancy in convolutional kernel tensor.
+<img src="https://i.imgur.com/LkBQd3d.png" width=400>
+
+The drawback: implementation is not easy because of a decomposition operation. Current methods perform low-rank only approximation layer by layer, not globally. Finally, it requires extensive model retraining to achieve convergence when compared to the original model.
+
+## Transferred/compact convolutional filters
+The idea of using **transferred convolutional filters** to compress CNN models is motivated by recent works in [this paper](http://proceedings.mlr.press/v48/cohenc16.pdf).
