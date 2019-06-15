@@ -65,4 +65,13 @@ This goal can be formulated as:
 
 <img src="https://i.imgur.com/r1GFfxe.png" width=450>
 
+Drawback:
+- not robust to possible attribute detection errors.
+- encodes only binary indicators but relative confidence scores are needed.
 
+Therefore, the author propose a soft weighted version (ASC-W), where the distance between attribute scores of the image
+and the attribute scores assigned to the dictionary centroids are used as the weights for selecting codewords: <img src="https://i.imgur.com/eorIVo0.png" width=200>
+
+The fomulation:
+
+<img src="https://i.imgur.com/dvfWRsu.png" width=450>
