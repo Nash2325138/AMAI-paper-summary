@@ -102,4 +102,4 @@ Attribute-Embedded Inverted Indexing:
 
 <img src="https://i.imgur.com/DCdBA6C.png" width=400>
 
-The paper also showcases its scalibility in terms of memory usage, online retrieval time
+The paper also showcases its scalibility in terms of memory usage, and online retrieval time in the last few subsections.
