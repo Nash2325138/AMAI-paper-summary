@@ -1,4 +1,6 @@
 # Scalable Face Image Retrieval Using Attribute-Enhanced Sparse Codewords
+![](https://i.imgur.com/G7rGaBY.jpg)
+
 This work detected **human attributes** automatically to improve content-based face retrieval
 by constructing **semantic codewords** for efficient large-scale face retrieval.
 The essential factors for face retrieval and effectiveness of different attributes are also experimented and discuseed.
@@ -75,3 +77,29 @@ and the attribute scores assigned to the dictionary centroids are used as the we
 The fomulation:
 
 <img src="https://i.imgur.com/dvfWRsu.png" width=450>
+
+### Attribute Embedded Inverted Indexing (AEI)
+1. Image Ranking and Inverted Indexing: use a codeword set to represent computed the sparse representation of an image.
+The similarity between two images:  <img src="https://i.imgur.com/4ZAZYpV.png" width=200>
+2. Attribute-Embedded Inverted Indexing:
+use a binary signature to represent its human attribute b: <img src="https://i.imgur.com/LX0rVxQ.png" width=200>,
+and the similarity score becomes: <img src="https://i.imgur.com/Co5Rj1c.png" width=350>
+
+## Experiments
+Compare to baselines:
+
+<img src="https://i.imgur.com/Ec19b57.png" width=500>
+
+Performance of single attribute:
+
+<img src="https://i.imgur.com/unKapPM.png" width=600>
+
+Using multiple attributes:
+
+<img src="https://i.imgur.com/NOqeeLJ.png" width=400>
+
+Attribute-Embedded Inverted Indexing:
+
+<img src="https://i.imgur.com/DCdBA6C.png" width=400>
+
+The paper also showcases its scalibility in terms of memory usage, online retrieval time
