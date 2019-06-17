@@ -26,8 +26,8 @@ Prior works crop only the facial region and normalize the face into the same pos
 and illumination. which ignores the rich semantic cues decribed in figure above.
 
 Also, the following statics (entropy and mutual information computed from two datasets s using only gender
-as the human attribute) show that using human attributes can help the face retrieval task since the mutual information
-(in another word, entropy of identity reduced after given gender attribute) is non-trivial.
+as the human attribute) show that using **human attributes can help the face retrieval task since the mutual information**
+(in another word, entropy of identity reduced after given gender attribute) **is non-trivial**.
 
 <img src="https://i.imgur.com/4ofApi9.png" width=350>
 
