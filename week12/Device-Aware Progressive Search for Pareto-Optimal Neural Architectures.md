@@ -42,10 +42,43 @@ Search space of one convolutional layer:
 ## Search algorithm
 <img src="https://i.imgur.com/kDTTQje.png" width=700>
 
-The search algorithm applied Sequential Model-Based Optimization and is composed of 3 steps:
+The search algorithm applied Sequential Model-Based Optimization
+to search the architectures from a small search space to a large one:
 1. Train and Mutation: K models with #layers=l will be trained. To mutate, one layer
 (conv or norm, depending on the last layer) will be added and therefore there will
 be 3 (norm is added) or 6 (conv is added) times of number of models after mutation.
 2. Update and Inference: To evaluate the mutated models, a **surrogate function** is used to 
 avoid time-consuming training to obtain true accuracy of a network.
-3. Model Selection:
+3. Model Selection: previous designed PNAS method adopted the SMBO algorithm, which simply
+selects top K performing models based on predicted accuracies. However, this work considers both QoS
+(Quality of Service) and hardware requirements (e.g., memory size), therefore multiple
+**hard constraints µ** (minimal requirement) and **soft constraints ξ**(one of the objectives to be optimized) are set to
+be eventually selected using **Pareto Optimality selection**.
+
+### Pareto Optimality
+Definitions:
+- A solution is said to be Pareto optimal if none of the objectives can be improved without worsening some of the other objectives
+- The solutions achieve Pareto-optimality are said to be in the Pareto front.
+
+### Surrogate Function
+A RNN is constructed as a surrogate function to predict the classification accuracy of an architecture
+because of its high sampling efficiency and the ability to handle different length of inputs
+(for the progressively growing number of layers).
+
+<img src="https://i.imgur.com/M5RRPnR.png" width=400>
+
+Note: the input to the RNN is the one-hot encoding of the cell structure.
+
+## Experiments 
+The experiments is based on the following settings
+<img src="https://i.imgur.com/6bV05AX.png" width=600>
+
+### CIFAR-10
+Each model is color-coded: green (DPP-Net-PNAS), yellow (DPPNet-WS), cyan (DPP-Net-Panacea), and red (CondenseNet):
+
+<img src="https://i.imgur.com/WdeT22x.png" width=600>
+
+<img src="https://i.imgur.com/MySupIm.png" width=700>
+
+### ImageNet
+<img src="https://i.imgur.com/0vSTwLH.png" width=700>
