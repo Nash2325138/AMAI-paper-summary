@@ -50,5 +50,51 @@ In details, this layer first compute a **similarity matrix S** between the conte
 
 The similarity matrix S is then used to compute the following **Context-to-query (C2Q) attention** and **Query-to-context (Q2C) attention**
 
-Context-to-query (C2Q) attention:
-Query-to-context (Q2C) attention:
+Context-to-query (C2Q) attention: simply the new query representation weighted by similarity matrix S, i.e. 
+<img src="https://i.imgur.com/cCVRvmB.png" width=150>, and 
+<img src="https://i.imgur.com/6fm1rIx.png" width=120>
+
+Query-to-context (Q2C) attention: symetric to C2Q, the new context representation weighted by similarity matrix S, i.e. 
+<img src="https://i.imgur.com/m0g3ZUO.png" width=190>, and 
+<img src="https://i.imgur.com/k1Xnwdd.png" width=150>
+
+Finally, combined with C2Q and Q2C, a query-aware representation of context are obtained through a fc-layer beta:
+<img src="https://i.imgur.com/ehJmYeq.png" width=350>
+, and <img src="https://i.imgur.com/yLLMznT.png" width=250> 
+
+(note, the first equation probably misses the weight W_beta)
+
+### Modeling Layer
+Similar to Contextual Embedding Layer, this layer is composed of a 2-layer bi-directional LSTM, but it captures the interaction among the context words conditioned on the query instead of independently as Contextual Embedding Layer does. The output is presented as M.
+
+### Output Layer
+Like other approaches trying to model QA tasks, the output layer is to predict the start index p1 and the end index p2
+over the context.
+
+<img src="https://i.imgur.com/9ZEwD7k.png" width=250>, and <img src="https://i.imgur.com/FNLyxnq.png" width=270>,
+
+where M^2 is obtained by another bi-directional LSTM fed with M.
+
+### Loss
+The loss is set to the sum of the negative log probabilities
+of the true start and end indices by the predicted distributions:
+
+<img src="https://i.imgur.com/w6GwvRT.png" width=300>
+
+## QA experiments
+
+### SQuAD test set
+<img src="https://i.imgur.com/1X2VpBm.png" width=700>
+
+#### Different level of granularies  visualization (t-SNE)
+<img src="https://i.imgur.com/wj2Ojc5.png" width=700>
+
+As we can see, "may" can be distinquished in phrase space but not in word space, proving that different levels of granularies are helpful.
+
+#### Some Attention visualization
+<img src="https://i.imgur.com/KdfIUxG.png" width=700>
+Left: query, right: context
+
+
+### CNN/DailyMail datasets
+<img src="https://i.imgur.com/BfmIDGS.png" width=600>
