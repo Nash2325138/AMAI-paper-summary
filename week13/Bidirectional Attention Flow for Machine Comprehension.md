@@ -25,18 +25,18 @@ of the context paragraph at **different levels of granularity**:
 5. Modeling Layer
 6. Output Layer
 
-#### Character Embedding Layer and Word Embedding Layer
+#### 1&2. Character Embedding Layer and Word Embedding Layer
 The two embedding layers aim to obtain the low-level representation of input paragraphs for both the context and the query.
 Character embedding layer takes 1d CNN as its extrator. Word embedding layer applies GloVe to get the output.
 Both of therir outputs are fix-length vectors.
 
-#### Contextual Embedding Layer
+#### 3. Contextual Embedding Layer
 Both of outputs from previous embedding layers are them fed to the contextual embedding layer, which is
 essentially bi-directional LSTM.
 
 Combined with the first two layers, the output could be seen as features containning different levels of granularity.
 
-### Attention Flow Layer
+### 4. Attention Flow Layer
 Attention flow layer is the main novelty in this paper and it's responsible for linking and fusing information
 from the context and the query words.
 Instead of directly summarizing the query and context into single feature vectors like previous attention machenisms do,
@@ -64,10 +64,10 @@ Finally, combined with C2Q and Q2C, a query-aware representation of context are 
 
 (note, the first equation probably misses the weight W_beta)
 
-### Modeling Layer
+### 5. Modeling Layer
 Similar to Contextual Embedding Layer, this layer is composed of a 2-layer bi-directional LSTM, but it captures the interaction among the context words conditioned on the query instead of independently as Contextual Embedding Layer does. The output is presented as M.
 
-### Output Layer
+### 6. Output Layer
 Like other approaches trying to model QA tasks, the output layer is to predict the start index p1 and the end index p2
 over the context.
 
@@ -80,6 +80,8 @@ The loss is set to the sum of the negative log probabilities
 of the true start and end indices by the predicted distributions:
 
 <img src="https://i.imgur.com/w6GwvRT.png" width=300>
+
+---
 
 ## QA experiments
 
